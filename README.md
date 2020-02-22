@@ -11,6 +11,8 @@ So please modify accordingly.
 
 Also, one more thing to note: certain terraform versions might cause you to encounter error for i_am_role_policy resource. If that happens to you, please try to downgrade your terraform version.
 
+for reference : https://github.com/terraform-providers/terraform-provider-aws/issues/9918
+
 This code is written for CIT481 Senior Design - Storage Solution group.
 
 -Petra Antyanti Larisa Anggraeni
