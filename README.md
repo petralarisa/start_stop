@@ -13,7 +13,7 @@ Please read the comments inside each file and modify accordingly.
 
 when you clone this repo, don't forget to zip the python file before running terraform apply.
 
-If you received 2 errors the first time you run terraform apply with error messages saying that name can not be found or something like that, run it again and it should be successful. If you get a different error message please reach out to me or address it on Slack and I will try to look into it. 
+If you receive 2 errors the first time you run terraform apply with error messages saying that name can not be found or something like that, run it again and it should be successful. If you get a different error message please reach out to me or address it on Slack and I will try to look into it. 
 
 Also, one more thing to note: certain terraform versions might cause you to encounter error for i_am_role_policy resource. If that happens to you, please try to downgrade your terraform version.
 
