@@ -9,6 +9,10 @@ role = "aws_iam_role.lambda_exec_role.name" vs role = "${aws_iam_role.lambda_exe
 
 So please modify accordingly.
 
+Please read the comments inside each file and modify accordingly.
+
+when you clone this repo, don't forget to zip the python file before running terraform apply.
+
 Also, one more thing to note: certain terraform versions might cause you to encounter error for i_am_role_policy resource. If that happens to you, please try to downgrade your terraform version.
 
 for reference : https://github.com/terraform-providers/terraform-provider-aws/issues/9918
