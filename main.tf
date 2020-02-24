@@ -45,13 +45,14 @@ resource "aws_iam_role" "lambda_exec_role" {
 }
 
 resource "aws_iam_role_policy_attachment" "test-attach" {
-  role = "aws_iam_role.lambda_exec_role.name"
-  policy_arn = "aws_iam_policy.policy.arn"
+  #name = "test-attach"
+  role = "lambda_role"
+  policy_arn = "arn:aws:iam::[This part needs to be adjusted to your arn]:policy/test_policy"
 }
 
 resource "aws_lambda_function" "start_instance" {
-  role = "aws_iam_role.lambda_exec_role.arn"
-  #role = "arn:aws:iam::620636132257:role/lambda_role"
+  #role = "arn:aws:iam::"please adjust accordingly":role/lambda_role"
+  role = "arn:aws:iam::[This part needs to be adjusted]:role/lambda_role"
   handler = "start_instance.lambda_handler"
   runtime = "python3.6"
   filename = "start_instance.py.zip"
@@ -59,8 +60,8 @@ resource "aws_lambda_function" "start_instance" {
 }
 
 resource "aws_lambda_function" "stop_instance" {
-  role = "aws_iam_role.lambda_exec_role.arn"
-  #role = "arn:aws:iam::620636132257:role/lambda_role"
+  #role = "aws_iam_role.lambda_exec_role.arn"
+  role = "arn:aws:iam::[This part needs to be adjusted]:role/lambda_role"
   handler = "stop_instance.lambda_handler"
   runtime = "python3.6"
   filename = "stop_instance.py.zip"
@@ -68,7 +69,7 @@ resource "aws_lambda_function" "stop_instance" {
 }
 
 resource "aws_cloudwatch_event_rule" "cron_start" {
-  name = "cron_launch"
+  name = "cron_start"
   schedule_expression = "cron(5 20 ? * MON-FRI *)"
 }
 
@@ -78,13 +79,13 @@ resource "aws_cloudwatch_event_rule" "cron_stop" {
 }
 
 resource "aws_cloudwatch_event_target" "run_start_lambda" {
-  rule = "aws_cloudwatch_event_rule.cron_start.name"
+  rule = "cron_start"
   target_id = "aws_lambda_function.start_instance.id"
-  arn = "aws_lambda_function.start_instance.arn"
+  arn = "arn:aws:lambda:us-east-1:[This part needs to be adjusted]:function:myStart"
 }
 
 resource "aws_cloudwatch_event_target" "run_stop_lambda" {
-  rule = "aws_cloudwatch_event_rule.cron_stop.name"
+  rule = "cron_stop"
   target_id = "aws_lambda_function.stop_instance.id"
-  arn = "aws_lambda_function.stop_instance.arn"
+  arn = "arn:aws:lambda:us-east-1:[This part needs to be adjusted]:function:myStop"
 }
