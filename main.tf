@@ -93,13 +93,13 @@ resource "aws_cloudwatch_event_target" "run_stop_lambda" {
 resource "aws_lambda_permission" "allow_cloudwatch" {
   action = "lambda:InvokeFunction"
   function_name = "myStart"
-  source_arn    = "arn:aws:events:us-east-1:620636132257:rule/cron_start"
+  source_arn    = "arn:aws:events:us-east-1:[This part needs to be adjusted]:rule/cron_start"
   principal = "events.amazonaws.com"
 }
 
 resource "aws_lambda_permission" "allow_cloudwatch_2" {
   action = "lambda:InvokeFunction"
   function_name = "myStop"
-  source_arn    = "arn:aws:events:us-east-1:620636132257:rule/cron_stop"
+  source_arn    = "arn:aws:events:us-east-1:[This part needs to be adjusted]:rule/cron_stop"
   principal = "events.amazonaws.com"
 }
